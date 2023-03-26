@@ -7,6 +7,26 @@ const logo = new URL("../assets/open-wc-logo.svg", import.meta.url).href;
 class BadgeDashboard extends LitElement {
   static properties = {
     header: { type: String },
+
+    badgeTopTitle: {
+      type: String,
+      reflect: true,
+    },
+
+    badgePic:{
+      type: String
+    },
+
+    badgeTitleName:{
+      type: String,
+      reflect: true,
+    },
+
+    badgeCreatorName: {
+      type: String,
+      reflect: true,
+    }
+
   };
 
   static styles = css`
@@ -101,7 +121,11 @@ class BadgeDashboard extends LitElement {
   constructor() {
     super();
     this.header = "My app";
-  }
+    this.badgeTopTitle = "Technology & Information";
+    this.badgePic = "https://badgesapp.psu.edu/uploads/badge/image/337/APA_Style.png";
+    this.badgeTitleName = "APA Style Citations: Introduction";
+    this.badgeCreatorName = "Ethan Chen";
+    }
 
   render() {
     return html`
@@ -120,22 +144,22 @@ class BadgeDashboard extends LitElement {
         <div class="space-between-searchbar-and-badges">
           <div class="badge-all">
             <div class="badge-top">
-              <span class="badge-top-title">Technology & Information</span>
+              <span class="badge-top-title">${this.badgeTopTitle}</span>
             </div>
 
             <div class="badge-body">
               <div class="badge-image">
                 <img
                   class="badgepic"
-                  src="https://badgesapp.psu.edu/uploads/badge/image/337/APA_Style.png"
+                  src=${this.badgePic}
                   alt="badge"
                 />
               </div>
-              <h3>APA Style Citations: Introduction</h3>
+              <h3>${this.badgeTitleName}</h3>
             </div>
 
             <div class="creator">
-              <div class="badge-creator-name">Creator: Ethan Chen</div>
+              <div class="badge-creator-name">Creator: ${this.badgeCreatorName}</div>
             </div>
           </div>
         </div>
