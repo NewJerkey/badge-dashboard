@@ -1,23 +1,17 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-
-const logo = new URL("../assets/open-wc-logo.svg", import.meta.url).href;
 
 class BadgeDashboard extends LitElement {
   static properties = {
-    header: { type: String },
-
     badgeTopTitle: {
       type: String,
       reflect: true,
     },
 
-    badgePic:{
-      type: String
+    badgePic: {
+      type: String,
     },
 
-    badgeTitleName:{
+    badgeTitleName: {
       type: String,
       reflect: true,
     },
@@ -25,28 +19,12 @@ class BadgeDashboard extends LitElement {
     badgeCreatorName: {
       type: String,
       reflect: true,
-    }
-
+    },
   };
 
   static styles = css`
-    .searchbar {
-      box-shadow: 1px 1px 1px 2px gray;
-      margin: auto;
-      margin-top: 5px;
-      width: fit-content;
-    }
-    .searchInput {
-      width: 1300px;
-      height: 50px;
-      border: 0;
-    }
-    .icon {
-      width: 45px;
-    }
-
-    .space-between-searchbar-and-badges{
-       padding: 20px;
+    main {
+      padding: 20px;
     }
 
     .badge-all {
@@ -120,46 +98,31 @@ class BadgeDashboard extends LitElement {
 
   constructor() {
     super();
-    this.header = "My app";
     this.badgeTopTitle = "Technology & Information";
-    this.badgePic = "https://badgesapp.psu.edu/uploads/badge/image/337/APA_Style.png";
+    this.badgePic =
+      "https://badgesapp.psu.edu/uploads/badge/image/337/APA_Style.png";
     this.badgeTitleName = "APA Style Citations: Introduction";
     this.badgeCreatorName = "Ethan Chen";
-    }
+  }
 
   render() {
     return html`
       <main>
-        <div class="searchbar">
-          <form>
-            <simple-icon icon="search" class="icon"></simple-icon>
-            <input
-              class="searchInput"
-              type="text"
-              placeholder="Search Content, Topics, and People"
-            />
-          </form>
-        </div>
+        <div class="badge-all">
+          <div class="badge-top">
+            <span class="badge-top-title">${this.badgeTopTitle}</span>
+          </div>
 
-        <div class="space-between-searchbar-and-badges">
-          <div class="badge-all">
-            <div class="badge-top">
-              <span class="badge-top-title">${this.badgeTopTitle}</span>
+          <div class="badge-body">
+            <div class="badge-image">
+              <img class="badgepic" src=${this.badgePic} alt="badge" />
             </div>
+            <h3>${this.badgeTitleName}</h3>
+          </div>
 
-            <div class="badge-body">
-              <div class="badge-image">
-                <img
-                  class="badgepic"
-                  src=${this.badgePic}
-                  alt="badge"
-                />
-              </div>
-              <h3>${this.badgeTitleName}</h3>
-            </div>
-
-            <div class="creator">
-              <div class="badge-creator-name">Creator: ${this.badgeCreatorName}</div>
+          <div class="creator">
+            <div class="badge-creator-name">
+              Creator: ${this.badgeCreatorName}
             </div>
           </div>
         </div>
