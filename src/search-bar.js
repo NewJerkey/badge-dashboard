@@ -3,7 +3,16 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 
 class Searchbar extends LitElement {
-  static properties = {}
+  static properties = {
+    searchText: {
+      type: String,
+      reflect: true
+    },
+    icon: {
+      type: String,
+      reflect: true
+    }
+  }
   static styles = css`
     .searchbar {
       box-shadow: 1px 1px 1px 2px gray;
@@ -23,6 +32,8 @@ class Searchbar extends LitElement {
 
   constructor() {
     super();
+    this.searchText = "Search Content, Topics, and People";
+    this.icon = "search"
   }
 
   render() {
@@ -30,11 +41,11 @@ class Searchbar extends LitElement {
       <main>
         <div class="searchbar">
           <form>
-            <simple-icon icon="search" class="icon"></simple-icon>
+            <simple-icon icon=${this.icon} class="icon"></simple-icon>
             <input
               class="searchInput"
               type="text"
-              placeholder="Search Content, Topics, and People"
+              placeholder=${this.searchText}
             />
           </form>
         </div>
