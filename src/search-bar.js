@@ -14,12 +14,21 @@ class Searchbar extends LitElement {
     }
   }
   static styles = css`
-    .searchbar {
+    /* .searchbar {
       box-shadow: 1px 1px 1px 2px gray;
       margin: auto;
       margin-top: 5px;
       width: fit-content;
+    } */
+
+    .searchbar {
+    margin-top: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 10px;
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.3);
     }
+
     .searchInput {
       width: 1300px;
       height: 50px;

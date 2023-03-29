@@ -15,17 +15,71 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+
+    .page-title {
+      margin-bottom: 15px;
+      font-size: 20px;
+      display: inline-block;
+      padding: 5px 0 10px 10px;
+    }
+
+    .spacearoundwhitebackdropbox {
+      position: relative;
+      min-height: 1px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .whitebackdrop {
+      padding: 12px 20px 15px 20px;
+      background-color: #fff;
+      margin-bottom: 25px;
+      border-radius: 4px;
+    }
+
+    .h3 {
+      font-family: "effra", sans-serif;
+      font-weight: 300;
+      font-size: 24px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
   </style>
   <title>badge-dashboard</title>
 </head>
 
 <body>
-  <search-bar></search-bar>
-  <badge-list></badge-list>
 
-  <script type="module" src="./src/badge-dashboard.js"></script>
-  <script type="module" src="./src/search-bar.js"></script>
-  <script type="module" src="./src/badge-list.js"></script>
+  <div class="page-title">
+    <h1>Explore<h1>
+  </div>
+
+  <div class="spacearoundwhitebackdropbox">
+    <div class="whitebackdrop">
+      <div class="h3">
+        Explore our content in a self-guided manner. Want us to guide you through learning new skills?
+        Try out Missions. Looking for other people with similar focus? Find them in Groups. Interested in viewing all
+        the options within a certain subject area?
+        You can do that with Topics
+      </div>
+      <search-bar></search-bar>
+    </div>
+  </div>
+
+  <div class="spacearoundwhitebackdropbox">
+    <div class="whitebackdrop">
+      <badge-list></badge-list>
+    </div>
+  </div>
+
+
+  <script type="module">
+    import "./src/search-bar.js";
+    import "./src/badge-list.js";
+    import "./src/badge-dashboard.js";
+    import "@lrnwebcomponents/simple-icon/simple-icon.js";
+    import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+  </script>
 </body>
 
 </html>
