@@ -1,25 +1,25 @@
 import { LitElement, html, css } from "lit";
 import "./badge-dashboard";
 
-export class Badges extends LitElement {
+export class BadgeList extends LitElement {
   static get tag() {
     return "badge-list";
   }
 
   static get properties() {
     return {
-      badges: { type: Array },
+      list: { type: Array },
     };
   }
 
   constructor() {
     super();
-    this.badges = [];
+    this.list = [];
     this.updateRoster();
   }
 
   updateRoster() {
-    const address = new URL('../api/badges', import.meta.url).href;
+    const address = '../api/badges';
     fetch(address)
       .then((response) => {
         if (response.ok) {
@@ -28,7 +28,7 @@ export class Badges extends LitElement {
         return [];
       })
       .then((data) => {
-        this.badges = data;
+        this.list = data;
       });
   }
 
@@ -50,8 +50,8 @@ export class Badges extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        ${this.badges.map(
-          (badge) => html`
+        ${this.list.map(
+          badge => html`
             <div class="item">
               <badge-dashboard
                 badgeTopTitle="${badge.badgeTopTitle}"
@@ -66,4 +66,4 @@ export class Badges extends LitElement {
     `;
   }
 }
-customElements.define(Badges.tag, Badges);
+customElements.define(BadgeList.tag, BadgeList);
