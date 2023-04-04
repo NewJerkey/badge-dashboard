@@ -11,6 +11,9 @@ class Searchbar extends LitElement {
     icon: {
       type: String,
       reflect: true
+    },
+    searchInput: {
+      type: String
     }
   }
   static styles = css`
@@ -42,21 +45,39 @@ class Searchbar extends LitElement {
   constructor() {
     super();
     this.searchText = "Search Content, Topics, and People";
-    this.icon = "search"
+    this.icon = "search";
+    this.searchInput = "";
+  }
+
+  searchInput(e) {
+    this.searchInput = this.shadowRoot.querySelector('input').value;
+  }
+
+  update(changedProperties) {
+    super.update(changedProperties);
+    if (changedProperties.has('searchInput')) {
+      this.dispatchEvent(new CustomEvent('searchChange', {
+        query: {
+          value: this.searchInput
+        }
+      }));
+    }
   }
 
   render() {
     return html`
       <main>
         <div class="searchbar">
-          <form>
+          
             <simple-icon icon=${this.icon} class="icon"></simple-icon>
             <input
               class="searchInput"
               type="text"
               placeholder=${this.searchText}
+              @input="${this.searchInput}"
             />
-          </form>
+            
+          
         </div>
       </main>
     `;

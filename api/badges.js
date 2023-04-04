@@ -1,5 +1,7 @@
 export default async function handler(request, res) {
 
+    console.log(request.query.search);
+
   const badges = [
     {
         "badgeTopTitle": "Technology & Information",

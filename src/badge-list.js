@@ -9,6 +9,7 @@ export class BadgeList extends LitElement {
   static get properties() {
     return {
       list: { type: Array },
+      prompt: { type: String, reflect: true}
     };
   }
 
@@ -16,10 +17,13 @@ export class BadgeList extends LitElement {
     super();
     this.list = [];
     this.updateRoster();
+    this.filterSearch(this.list, this.prompt);
+    this.prompt = "spenser";
   }
 
   updateRoster() {
-    const address = '../api/badges';
+    // const address = '../api/badges';
+    const address = '../assets/badge-map.json';
     fetch(address)
       .then((response) => {
         if (response.ok) {
@@ -31,6 +35,19 @@ export class BadgeList extends LitElement {
         this.list = data;
       });
   }
+
+  filterSearch(items, prompt) {
+    return items.filter((thing) => {
+      for (var item in thing) {
+        if (thing[item].toString().toLowerCase().includes(prompt.toLowerCase())) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
+
+  // need a function that updates prompt
 
   static get styles() {
     return css`
@@ -50,7 +67,7 @@ export class BadgeList extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        ${this.list.map(
+        ${this.filterSearch(this.list, this.prompt).map(
           badge => html`
             <div class="item">
               <badge-dashboard
