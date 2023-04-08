@@ -23,8 +23,8 @@ export class BadgeList extends LitElement {
   }
 
   updateRoster() {
-    // const address = '../api/badges';
-    const address = "../assets/badge-map.json";
+    const address = '../api/badges';
+    // const address = "../assets/badge-map.json";
     fetch(address)
       .then((response) => {
         if (response.ok) {
@@ -53,8 +53,6 @@ export class BadgeList extends LitElement {
   async _handleSearchEvent(e) {
      this.prompt = e.detail.value;
  }
-
-  // need a function that updates prompt
 
   static get styles() {
     return css`
