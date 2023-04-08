@@ -19,7 +19,7 @@ export class BadgeList extends LitElement {
     this.list = [];
     this.updateRoster();
     this.filterSearch(this.list, this.prompt);
-    this.prompt = "spenser";
+    this.prompt = "";
   }
 
   updateRoster() {
@@ -49,6 +49,10 @@ export class BadgeList extends LitElement {
       return false;
     });
   }
+
+  async _handleSearchEvent(e) {
+     this.prompt = e.detail.value;
+ }
 
   // need a function that updates prompt
 
@@ -110,7 +114,7 @@ export class BadgeList extends LitElement {
         the options within a certain subject area?
         You can do that with Topics
       </div>
-        <search-bar></search-bar>
+        <search-bar @value-changed="${this._handleSearchEvent}"></search-bar>
     </div>
   </div>
 

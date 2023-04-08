@@ -12,7 +12,7 @@ class Searchbar extends LitElement {
       type: String,
       reflect: true
     },
-    searchInput: {
+    value: {
       type: String
     }
   }
@@ -46,22 +46,16 @@ class Searchbar extends LitElement {
     super();
     this.searchText = "Search Content, Topics, and People";
     this.icon = "search";
-    this.searchInput = "";
+    this.value = "";
   }
 
   searchInput(e) {
-    this.searchInput = this.shadowRoot.querySelector('input').value;
-  }
-
-  update(changedProperties) {
-    super.update(changedProperties);
-    if (changedProperties.has('searchInput')) {
-      this.dispatchEvent(new CustomEvent('searchChange', {
-        query: {
-          value: this.searchInput
-        }
-      }));
-    }
+    this.value = e.target.value;
+    this.dispatchEvent(new CustomEvent('value-changed', {
+      detail: {
+        value: this.value,
+      }
+    }));
   }
 
   render() {
